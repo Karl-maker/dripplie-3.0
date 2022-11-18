@@ -8,7 +8,10 @@
  */
 
 import Head from "next/head";
+import { Provider } from "react-redux";
+
 import Theme from "../theme";
+import store from "../context/store";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -16,9 +19,11 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <Theme>
-        <Component {...pageProps} />
-      </Theme>
+      <Provider store={store}>
+        <Theme>
+          <Component {...pageProps} />
+        </Theme>
+      </Provider>
     </>
   );
 }
