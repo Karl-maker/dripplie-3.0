@@ -21,6 +21,8 @@ export default function Wrapper({ children, width = 200, height = 200 }) {
         borderRadius,
         padding,
       }}
-    ></Box>
+    >
+      {children}
+    </Box>
   );
 }
