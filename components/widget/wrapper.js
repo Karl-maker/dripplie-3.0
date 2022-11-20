@@ -10,7 +10,7 @@ import { Box } from "@mui/material";
 
 import defaults from "./defaults";
 
-export default function Wrapper({
+export default function WidgetWrapper({
   children,
   width = defaults.width,
   height = defaults.height,
