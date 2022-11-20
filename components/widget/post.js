@@ -58,13 +58,23 @@ export default function Post({
           margin: 0,
           padding,
           borderRadius,
-          bgcolor: "background.default",
+          bgcolor: "background.secondary",
         }}
       >
         {
           // Author information
         }
         <UserInfo user={author} profile_img={profile_img} verified={verified} />
+        {
+          // Text
+        }
+        <Typography
+          variant="subtitle2"
+          sx={{ marginTop: 0.5 }}
+          color="text.primary"
+        >
+          {text}
+        </Typography>
       </Box>
     </Widget>
   );
