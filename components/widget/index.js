@@ -10,7 +10,7 @@ import { useState, useRef } from "react";
 import { Box, Button, Slide, Fade } from "@mui/material";
 
 import WidgetWrapper from "./wrapper";
-import defaults from "./defaults";
+import defaults from "./constants";
 
 export default function Widget({
   children = <></>,

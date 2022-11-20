@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 
 import UserInfo from "../user/user-info";
 import Widget from ".";
-import defaults from "./defaults";
+import defaults from "./constants";
 import page from "../../constants/pages";
 
 export default function Post({

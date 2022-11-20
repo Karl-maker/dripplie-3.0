@@ -8,7 +8,7 @@
 
 import { Box } from "@mui/material";
 
-import defaults from "./defaults";
+import defaults from "./constants";
 
 export default function WidgetWrapper({
   children,

@@ -8,7 +8,7 @@
 
 import { Skeleton } from "@mui/material";
 
-import defaults from "./defaults";
+import defaults from "./constants";
 
 export default function WidgetSkeleton({
   height = defaults.height,
