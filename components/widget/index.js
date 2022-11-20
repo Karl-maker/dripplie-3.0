@@ -76,7 +76,7 @@ export default function Widget({
         }}
       >
         {/* Box has a position of absolute to keep media content there */}
-        <Fade in={showMedia} timeout={{ exit: 500 }}>
+        <Fade in={showMedia} timeout={{ exit: 600 }}>
           <Box
             height={height}
             width={width}
@@ -100,6 +100,10 @@ export default function Widget({
         >
           <Slide
             direction="up"
+            timeout={{
+              enter: 700,
+              exit: 700,
+            }}
             in={!showMedia || !media}
             container={boxRef.current}
           >
