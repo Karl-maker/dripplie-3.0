@@ -9,6 +9,7 @@
 import { Box, Typography, Chip, Avatar } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 import UserInfo from "../user/user-info";
 import Widget from ".";
@@ -28,6 +29,7 @@ export default function Post({
   const padding = "10px";
   const { borderRadius } = defaults;
   const router = useRouter();
+  const [showMedia, setShowMedia] = useState(true);
 
   /* Event Handlers */
 
@@ -41,11 +43,13 @@ export default function Post({
     router.push(`${page.POST}/${post_id}`); // Send to post/123
   };
 
+  const toggleMedia = (e) => setShowMedia((show) => !show);
+
   /* Media Displayer */
 
   const MediaDisplay = ({ src }) => {
     return (
-      <Box sx={{ position: "relative" }}>
+      <Box sx={{ position: "relative" }} onClick={toggleMedia}>
         <Box
           sx={{ position: "absolute", padding: 1.5 }}
           onClick={handleProfileClick}
@@ -73,6 +77,8 @@ export default function Post({
       width={width}
       height={height}
       media={media ? <MediaDisplay src={media.url} /> : null}
+      showMedia={showMedia}
+      handleDisplayButtonClick={toggleMedia}
     >
       <Box
         height={height}

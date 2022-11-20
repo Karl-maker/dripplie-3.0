@@ -15,14 +15,13 @@ import defaults from "./constants";
 export default function Widget({
   children = <></>,
   media = null,
-  displayMediaByDefault = true,
+  showMedia = true,
   height = defaults.height,
   width = defaults.width,
+  handleDisplayButtonClick,
 }) {
   const borderRadius = defaults.borderRadius;
-  const [showMedia, setShowMedia] = useState(displayMediaByDefault);
   const boxRef = useRef(null);
-  const toggleMedia = (e) => setShowMedia((show) => !show);
 
   /**
    * @desc Small button that toggles if media should be shown
@@ -42,7 +41,7 @@ export default function Widget({
           alignItems: "center",
           justifyContent: "center",
         }}
-        onClick={toggleMedia}
+        onClick={handleDisplayButtonClick}
       >
         <Button
           color="info"
@@ -82,7 +81,7 @@ export default function Widget({
             width={width}
             sx={{
               position: "absolute",
-              zIndex: -1,
+              //zIndex: -1,
               padding: 0,
               margin: 0,
               borderRadius,
