@@ -9,7 +9,7 @@
 const defaults = {
   width: 200,
   height: 200,
-  borderRadius: "20px",
+  borderRadius: 6,
   borderWidth: 0.05,
   borderColor: "background.primary",
 };
