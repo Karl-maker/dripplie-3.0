@@ -1,3 +1,11 @@
+/**
+ *
+ * @author Karl-Johan Bailey
+ * @created 20/11/2022
+ * @desc Display user information
+ *
+ */
+
 import { Typography, Chip, Avatar } from "@mui/material";
 
 const UserInfo = ({ size = "normal", user, profile_img }) => {
