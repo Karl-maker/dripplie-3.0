@@ -9,8 +9,9 @@
 
 import Head from "next/head";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "@mui/material/styles";
 
-import Theme from "../theme";
+import theme from "../theme";
 import store from "../context/store";
 
 function MyApp({ Component, pageProps }) {
@@ -20,9 +21,9 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Provider store={store}>
-        <Theme>
+        <ThemeProvider theme={theme}>
           <Component {...pageProps} />
-        </Theme>
+        </ThemeProvider>
       </Provider>
     </>
   );

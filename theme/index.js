@@ -2,35 +2,26 @@
  *
  * @author Karl-Johan Bailey
  * @created 18/11/2022
- * @desc Providing WebApp with consistent themes for darkmode, lightmode and others.
+ * @desc Creating theme and sending it to _app.js, here you can add new themes and configure their palette
  *
  */
 
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 import colors from "./colors";
 
 const colorTheme = {
-  // Color focused
+  // TODO Add all theme colors for dark, light and others (holidays)
   light: createTheme({
     palette: {
       primary: {
         main: colors.light.text.primary,
       },
+      background: {
+        default: colors.light.background.default,
+        paper: colors.light.background.paper,
+      },
     },
   }),
 };
 
-const designTheme = {
-  // Borders, Shadows, etc
-  default: createTheme({}),
-};
-
-export default function Theme({ children }) {
-  return (
-    <ThemeProvider
-      theme={{ ...colorTheme["light"], ...designTheme["default"] }}
-    >
-      {children}
-    </ThemeProvider>
-  );
-}
+export default colorTheme["light"];

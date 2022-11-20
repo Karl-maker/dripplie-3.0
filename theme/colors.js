@@ -7,8 +7,8 @@
  */
 
 const light = {
-  background: { main: "#dfe6e9" },
-  text: { primary: "#2d3436" },
+  background: { default: "#dfe6e9", paper: "#ffff" },
+  text: { primary: "#e17055" },
 };
 
 export default { light };
