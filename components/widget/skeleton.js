@@ -20,7 +20,7 @@ export default function WidgetSkeleton({
       variant="rounded"
       width={width}
       height={height}
-      sx={{ bgcolor: "background.default", zIndex: -1, borderRadius }}
+      sx={{ bgcolor: "background.paper", borderRadius }}
     />
   );
 }

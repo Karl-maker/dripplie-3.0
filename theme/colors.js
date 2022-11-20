@@ -21,7 +21,7 @@ const light = {
 const dark = {
   background: {
     default: "#2c3e50",
-    paper: "#2c3e50",
+    paper: "#34495e",
     primary: "transparent",
     secondary: "#34495e",
   },
