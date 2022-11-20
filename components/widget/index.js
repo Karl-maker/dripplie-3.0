@@ -71,7 +71,7 @@ export default function Widget({
           zIndex: 1,
           padding: 0,
           margin: 0,
-          border: 1,
+          border: !showMedia || !media ? 1 : 0,
           borderColor: "background.primary",
         }}
       >
