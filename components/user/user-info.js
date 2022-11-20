@@ -19,7 +19,7 @@ const UserInfo = ({ size = "normal", user, profile_img, verified }) => {
           <Typography variant="caption" sx={{ marginRight: marginRightName }}>
             {user}
           </Typography>
-          <GoVerified color="#0984e3" />
+          {verified && <GoVerified color="#0984e3" />}
         </Box>
       }
       avatar={<Avatar src={profile_img || ""} alt={user} />}
