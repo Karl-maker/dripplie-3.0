@@ -9,16 +9,24 @@
 import { createTheme } from "@mui/material/styles";
 import colors from "./colors";
 
+const theme = "light";
 const colorTheme = {
   // TODO Add all theme colors for dark, light and others (holidays)
   light: createTheme({
     palette: {
       primary: {
-        main: colors.light.text.primary,
+        main: colors[theme].primary,
+      },
+      secondary: {
+        main: colors[theme].text.primary,
+      },
+      info: {
+        main: colors[theme].info,
       },
       background: {
-        default: colors.light.background.default,
-        paper: colors.light.background.paper,
+        default: colors[theme].background.default,
+        paper: colors[theme].background.paper,
+        primary: colors[theme].background.default,
       },
     },
   }),

@@ -8,6 +8,8 @@
 
 const light = {
   background: { default: "#dfe6e9", paper: "#ffff" },
+  primary: "#74b9ff",
+  info: "#b2bec3",
   text: { primary: "#e17055" },
 };
 
