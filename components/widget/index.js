@@ -20,7 +20,7 @@ export default function Widget({
   width = defaults.width,
   handleDisplayButtonClick,
 }) {
-  const borderRadius = defaults.borderRadius;
+  const { borderRadius, borderWidth } = defaults;
   const boxRef = useRef(null);
 
   /**
@@ -70,7 +70,7 @@ export default function Widget({
           zIndex: 1,
           padding: 0,
           margin: 0,
-          border: !showMedia || !media ? 1 : 0,
+          border: !showMedia || !media ? borderWidth : 0,
           borderColor: "background.primary",
         }}
       >

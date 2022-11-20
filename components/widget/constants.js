@@ -12,6 +12,7 @@ const defaults = {
   borderRadius: 6,
   borderWidth: 0.05,
   borderColor: "background.primary",
+  borderWidth: 1.5,
 };
 
 export default defaults;
