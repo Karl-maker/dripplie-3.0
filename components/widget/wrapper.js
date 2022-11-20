@@ -8,8 +8,14 @@
 
 import { Box } from "@mui/material";
 
-export default function Wrapper({ children, width = 200, height = 200 }) {
-  const borderRadius = "20px",
+import defaults from "./defaults";
+
+export default function Wrapper({
+  children,
+  width = defaults.width,
+  height = defaults.height,
+}) {
+  const borderRadius = defaults.borderRadius,
     padding = "0px";
 
   return (
