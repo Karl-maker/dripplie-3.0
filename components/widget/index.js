@@ -42,6 +42,7 @@ export default function Widget({
           alignItems: "center",
           justifyContent: "center",
         }}
+        onClick={toggleMedia}
       >
         <Button
           color="info"
@@ -52,7 +53,6 @@ export default function Widget({
           sx={{
             borderRadius: "30px",
           }}
-          onClick={toggleMedia}
           height={5}
           width={buttonWidth}
         />
