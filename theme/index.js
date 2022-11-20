@@ -26,7 +26,7 @@ const colorTheme = {
       background: {
         default: colors[theme].background.default,
         paper: colors[theme].background.paper,
-        primary: colors[theme].background.default,
+        primary: colors[theme].background.primary,
       },
     },
   }),

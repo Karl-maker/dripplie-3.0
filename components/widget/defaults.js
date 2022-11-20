@@ -10,6 +10,8 @@ const defaults = {
   width: 200,
   height: 200,
   borderRadius: "20px",
+  borderWidth: 0.05,
+  borderColor: "background.primary",
 };
 
 export default defaults;

@@ -7,7 +7,7 @@
  */
 
 import { useState, useRef } from "react";
-import { Box, Button, Slide } from "@mui/material";
+import { Box, Button, Slide, Fade } from "@mui/material";
 
 import WidgetWrapper from "./wrapper";
 import defaults from "./defaults";
@@ -16,8 +16,8 @@ export default function Widget({
   children = <></>,
   media = null,
   displayMediaByDefault = true,
-  height,
-  width,
+  height = defaults.height,
+  width = defaults.width,
 }) {
   const borderRadius = defaults.borderRadius;
   const [showMedia, setShowMedia] = useState(displayMediaByDefault);
@@ -30,7 +30,7 @@ export default function Widget({
    */
 
   const DisplayButton = () => {
-    const buttonWidth = (width || defaults.width) / 2;
+    const buttonWidth = (width || defaults.width) / 1.5;
     return (
       <Box
         width="100%"
@@ -45,7 +45,8 @@ export default function Widget({
       >
         <Button
           color="info"
-          variant="contained"
+          size="small"
+          variant="outlined"
           disableElevation
           disabled={!media}
           sx={{
@@ -62,27 +63,41 @@ export default function Widget({
   return (
     <WidgetWrapper height={height} width={width}>
       <Box
-        height="100%"
-        width="100%"
         ref={boxRef}
         sx={{
           overflow: "hidden",
           position: "relative",
           borderRadius,
           zIndex: 1,
+          padding: 0,
+          margin: 0,
+          border: 1,
+          borderColor: "background.primary",
         }}
       >
         {/* Box has a position of absolute to keep media content there */}
-        <Box
-          height="100%"
-          width="100%"
-          sx={{ position: "absolute", zIndex: -1 }}
-        >
-          {media || <></>}
-        </Box>
+        <Fade in={showMedia} timeout={{ exit: 500 }}>
+          <Box
+            height={height}
+            width={width}
+            sx={{
+              position: "absolute",
+              zIndex: -1,
+              padding: 0,
+              margin: 0,
+              borderRadius,
+            }}
+          >
+            {media || <></>}
+          </Box>
+        </Fade>
 
         {/* Box below uses Slide component to show content or child component */}
-        <Box height="100%" width="100%">
+        <Box
+          height={height}
+          width={width}
+          sx={{ padding: 0, margin: 0, borderRadius }}
+        >
           <Slide
             direction="up"
             in={!showMedia || !media}

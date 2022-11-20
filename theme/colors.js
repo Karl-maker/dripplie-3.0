@@ -7,7 +7,7 @@
  */
 
 const light = {
-  background: { default: "#dfe6e9", paper: "#ffff" },
+  background: { default: "#ffff", paper: "#dfe6e9", primary: "#ecf0f1" },
   primary: "#74b9ff",
   info: "#b2bec3",
   text: { primary: "#e17055" },

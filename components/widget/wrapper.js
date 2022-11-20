@@ -21,11 +21,12 @@ export default function WidgetWrapper({
   return (
     <Box
       sx={{
-        bgcolor: "background.default",
+        bgcolor: "transparent",
         height,
         width,
         borderRadius,
         padding,
+        padding: 0,
       }}
     >
       {children}
