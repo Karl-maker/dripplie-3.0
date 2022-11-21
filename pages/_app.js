@@ -15,7 +15,13 @@ import theme from "../theme";
 import store from "../context/store";
 
 function MyApp({ Component, pageProps }) {
-  return (
+  /**
+   * @desc Uses layout at page level if avaliable
+   * @see https://nextjs.org/docs/basic-features/layouts
+   **/
+
+  const getLayout = Component.getLayout || ((page) => page);
+  return getLayout(
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
