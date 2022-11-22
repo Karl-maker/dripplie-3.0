@@ -52,7 +52,9 @@ export default function Layout({ children }) {
   };
 
   return (
-    <Box sx={{ bgcolor: "background.default", height: "100vh" }}>
+    <Box
+      sx={{ bgcolor: "background.default", height: "100%", minHeight: "100vh" }}
+    >
       <Box component="nav" sx={NavStyle} position="fixed">
         <Box style={{ display: "flex" }}>
           {/* Logo */}
