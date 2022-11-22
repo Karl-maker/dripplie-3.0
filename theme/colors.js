@@ -13,7 +13,7 @@ const light = {
     primary: "#ecf0f1",
     secondary: "#ffff",
   },
-  primary: "#74b9ff",
+  primary: "#ff4757",
   info: "#b2bec3",
   text: { primary: "#2f3640" },
 };
@@ -25,7 +25,7 @@ const dark = {
     primary: "transparent",
     secondary: "#34495e",
   },
-  primary: "#2980b9",
+  primary: "#ff6b81",
   info: "#b2bec3",
   text: { primary: "#ffff" },
 };
