@@ -81,7 +81,6 @@ export default function Widget({
             width={width}
             sx={{
               position: "absolute",
-              //zIndex: -1,
               padding: 0,
               margin: 0,
               borderRadius,
