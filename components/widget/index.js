@@ -52,7 +52,7 @@ export default function Widget({
           sx={{
             borderRadius: "30px",
           }}
-          height={5}
+          height={10}
           width={buttonWidth}
         />
       </Box>
