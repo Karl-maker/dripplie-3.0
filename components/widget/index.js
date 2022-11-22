@@ -35,7 +35,8 @@ export default function Widget({
         width="100%"
         sx={{
           position: "absolute",
-          bottom: 5,
+          bottom: 1,
+          height: "30px",
           bgcolor: "transparent",
           display: "flex",
           alignItems: "center",
@@ -50,7 +51,11 @@ export default function Widget({
           disableElevation
           disabled={!media}
           sx={{
+            borderWidth,
             borderRadius: "30px",
+            "&:hover": {
+              borderWidth,
+            },
           }}
           height={10}
           width={buttonWidth}
