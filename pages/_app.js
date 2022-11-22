@@ -14,21 +14,23 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import store from "../context/store";
 
+import "../styles/globals.css";
+import Layout from "../components/layout";
+
 function MyApp({ Component, pageProps }) {
   /**
    * @desc Uses layout at page level if avaliable
    * @see https://nextjs.org/docs/basic-features/layouts
    **/
-
   const getLayout = Component.getLayout || ((page) => page);
-  return getLayout(
+  return (
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          {getLayout(<Component {...pageProps} />)}
         </ThemeProvider>
       </Provider>
     </>
