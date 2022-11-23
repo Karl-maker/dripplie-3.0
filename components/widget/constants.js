@@ -7,7 +7,8 @@
  */
 
 const defaults = {
-  width: 200,
+  width: "100%",
+  maxWidth: "100%",
   height: 200,
   borderRadius: 7,
   borderWidth: 0.05,

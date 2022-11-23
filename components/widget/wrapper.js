@@ -15,13 +15,14 @@ export default function WidgetWrapper({
   width = defaults.width,
   height = defaults.height,
 }) {
-  const borderRadius = defaults.borderRadius,
-    padding = "0px";
+  const { borderRadius, maxWidth } = defaults;
+  const padding = "0px";
 
   return (
     <Box
       sx={{
         bgcolor: "transparent",
+        maxWidth,
         height,
         width,
         borderRadius,

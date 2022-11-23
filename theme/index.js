@@ -9,7 +9,7 @@
 import { createTheme } from "@mui/material/styles";
 import colors from "./colors";
 
-const theme = "dark";
+const theme = "light";
 const colorTheme = {
   // TODO Add all theme colors for dark, light and others (holidays)
   light: createTheme({
