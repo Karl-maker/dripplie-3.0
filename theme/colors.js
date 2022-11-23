@@ -22,8 +22,8 @@ const dark = {
   background: {
     default: "#2c3e50",
     paper: "#34495e",
-    primary: "transparent",
-    secondary: "#34495e",
+    primary: "#34495e",
+    secondary: "#2c3e50",
   },
   primary: "#ff6b81",
   info: "#b2bec3",
