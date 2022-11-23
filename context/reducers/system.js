@@ -13,13 +13,17 @@ export const systemSlice = createSlice({
   name: "system",
   initialState: {
     location: null,
+    language: "japanese",
   },
   reducers: {
     updateLocation: (state, action) => {
       state.location = action.payload;
     },
+    updateLanguage: (state, action) => {
+      state.language = action.payload;
+    },
   },
 });
 
-export const { updateLocation } = systemSlice.actions;
+export const { updateLocation, updateLanguage } = systemSlice.actions;
 export default systemSlice.reducer;
