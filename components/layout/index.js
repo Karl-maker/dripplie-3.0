@@ -9,11 +9,13 @@
 import { Container, Box, Tabs, Tab, Button, Typography } from "@mui/material";
 import { RiLayout4Fill, RiCalendarFill, RiEarthFill } from "react-icons/ri";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import language from "../../constants/language";
 
 export default function Layout({ children }) {
   const [tabValue, setTabValue] = useState(0);
+  const system = useSelector((state) => state.system);
   const shadow = "0px 5px 30px 1px rgba(10,10,10,0.1)";
   const NavStyle = {
     display: "flex",
@@ -80,14 +82,14 @@ export default function Layout({ children }) {
           <Button
             variant="contained"
             disableElevation
+            maxWidth={40}
             sx={{
               textTransform: "none",
-              width: 80,
               borderRadius: "5px",
               color: "#ffff",
             }}
           >
-            {language["english"].sign_in}
+            {language[system.language].auth.sign_up}
           </Button>
         </Box>
       </Box>
