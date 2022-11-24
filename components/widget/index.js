@@ -1,3 +1,9 @@
+import { useState, useRef } from "react";
+import { Box, Button, Slide, Fade } from "@mui/material";
+
+import WidgetWrapper from "./wrapper";
+import defaults from "./constants";
+
 /**
  *
  * @author Karl-Johan Bailey
@@ -5,12 +11,6 @@
  * @desc This is the default widget which takes children and media element then displays it
  *
  */
-
-import { useState, useRef } from "react";
-import { Box, Button, Slide, Fade } from "@mui/material";
-
-import WidgetWrapper from "./wrapper";
-import defaults from "./constants";
 
 export default function Widget({
   children = <></>,

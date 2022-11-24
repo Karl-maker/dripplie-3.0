@@ -1,3 +1,7 @@
+import { Skeleton } from "@mui/material";
+
+import defaults from "./constants";
+
 /**
  *
  * @author Karl-Johan Bailey
@@ -5,10 +9,6 @@
  * @desc Loading component for UI's widget
  *
  */
-
-import { Skeleton } from "@mui/material";
-
-import defaults from "./constants";
 
 export default function WidgetSkeleton({
   height = defaults.height,

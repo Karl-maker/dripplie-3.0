@@ -17,6 +17,6 @@ export { buttonAnalytics };
  *
  */
 
-// TODO Connect GoogleAnalytics
-
-function buttonAnalytics(name, {}) {}
+function buttonAnalytics(name, {}) {
+  // TODO Connect GoogleAnalytics
+}

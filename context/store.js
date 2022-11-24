@@ -1,3 +1,6 @@
+import { configureStore } from "@reduxjs/toolkit";
+import system from "./reducers/system";
+
 /**
  *
  * @author Karl-Johan Bailey
@@ -6,9 +9,6 @@
  * @see Documentation @link https://react-redux.js.org/tutorials/quick-start
  *
  */
-
-import { configureStore } from "@reduxjs/toolkit";
-import system from "./reducers/system";
 
 export default configureStore({
   reducer: { system },

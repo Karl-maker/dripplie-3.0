@@ -1,3 +1,5 @@
+import { createSlice } from "@reduxjs/toolkit";
+
 /**
  *
  * @author Karl-Johan Bailey
@@ -6,8 +8,6 @@
  * @see Documentation @link https://react-redux.js.org/tutorials/quick-start
  *
  */
-
-import { createSlice } from "@reduxjs/toolkit";
 
 export const systemSlice = createSlice({
   name: "system",

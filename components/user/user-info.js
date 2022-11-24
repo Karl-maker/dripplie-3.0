@@ -1,3 +1,6 @@
+import { Typography, Chip, Avatar, Box } from "@mui/material";
+import { GoVerified } from "react-icons/go";
+
 /**
  *
  * @author Karl-Johan Bailey
@@ -5,9 +8,6 @@
  * @desc Display user information
  *
  */
-
-import { Typography, Chip, Avatar, Box } from "@mui/material";
-import { GoVerified } from "react-icons/go";
 
 const UserInfo = ({
   size = "normal",

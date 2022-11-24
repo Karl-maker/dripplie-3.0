@@ -1,3 +1,10 @@
+import { Container, Box, Tabs, Tab, Button, Typography } from "@mui/material";
+import * as RiIcon from "react-icons/ri";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
+import language from "../../constants/language";
+
 /**
  *
  * @author Karl-Johan Bailey
@@ -5,13 +12,6 @@
  * @desc Provides layout for all pages
  *
  */
-
-import { Container, Box, Tabs, Tab, Button, Typography } from "@mui/material";
-import * as RiIcon from "react-icons/ri";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-
-import language from "../../constants/language";
 
 export default function Layout({ children }) {
   const [tabValue, setTabValue] = useState(0);

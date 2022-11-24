@@ -1,11 +1,3 @@
-/**
- *
- * @author Karl-Johan Bailey
- * @created 20/11/2022
- * @desc Post widget for showing information
- *
- */
-
 import { Box, Typography, Chip, Avatar } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -15,6 +7,14 @@ import UserInfo from "../user/user-info";
 import Widget from ".";
 import defaults from "./constants";
 import page from "../../constants/pages";
+
+/**
+ *
+ * @author Karl-Johan Bailey
+ * @created 20/11/2022
+ * @desc Post widget for showing information
+ *
+ */
 
 export default function Post({
   width = defaults.width,
