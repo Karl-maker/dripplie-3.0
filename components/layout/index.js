@@ -7,7 +7,7 @@
  */
 
 import { Container, Box, Tabs, Tab, Button, Typography } from "@mui/material";
-import { RiLayout4Fill, RiCalendarFill, RiEarthFill } from "react-icons/ri";
+import * as RiIcon from "react-icons/ri";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -29,22 +29,16 @@ export default function Layout({ children }) {
     width: "100%",
   };
 
-  const ICON_SIZE = 25;
-
+  const ICON_SIZE = 20;
   const NavigationList = [
     {
       label: "Home",
-      icon: <RiLayout4Fill size={ICON_SIZE} />,
+      icon: <RiIcon.RiLayout4Fill size={ICON_SIZE} />,
       link: "",
     },
     {
-      label: "Events",
-      icon: <RiCalendarFill size={ICON_SIZE} />,
-      link: "",
-    },
-    {
-      label: "Global",
-      icon: <RiEarthFill size={ICON_SIZE} />,
+      label: "Search",
+      icon: <RiIcon.RiSearch2Line size={ICON_SIZE} />,
       link: "",
     },
   ];
@@ -75,7 +69,7 @@ export default function Layout({ children }) {
           indicatorColor="primary"
         >
           {NavigationList.map((item, index) => {
-            return <Tab label={item.icon} key={index} sx={{ padding: 2 }} />;
+            return <Tab label={item.icon} key={index} sx={{ padding: 0 }} />;
           })}
         </Tabs>
         <Box sx={{ marginRight: "20px" }}>

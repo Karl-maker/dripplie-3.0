@@ -23,7 +23,7 @@ export default function Home() {
    *  md = 4
    *  lg = 5 / 6
    */
-  const columns = 2;
+  const columns = 4;
   const posts = [
     <Post
       height={300}
@@ -153,7 +153,11 @@ export default function Home() {
       </Head>
       {/* Coloumns To Display On Mobile, x on Desktop */}
 
-      <Grid container sx={{ paddingTop: 1 }} justifyContent="center">
+      <Grid
+        container
+        sx={{ paddingTop: 1, paddingLeft: 0.5, paddingRight: 0.5 }}
+        justifyContent="center"
+      >
         {Array.from(Array(columns), (e, i) => {
           return (
             <Grid xs={6} sm={4} md={3} lg={2}>
@@ -164,7 +168,7 @@ export default function Home() {
                 alignItems="flex-start"
               >
                 {lists[i].map((post) => (
-                  <Box sx={{ padding: 1 }}>{post}</Box>
+                  <Box sx={{ padding: 0.5 }}>{post}</Box>
                 ))}
               </Stack>
             </Grid>

@@ -26,7 +26,6 @@ export default function WidgetWrapper({
         height,
         width,
         borderRadius,
-        padding,
         padding: 0,
       }}
     >

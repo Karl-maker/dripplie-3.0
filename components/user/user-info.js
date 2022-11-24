@@ -9,14 +9,23 @@
 import { Typography, Chip, Avatar, Box } from "@mui/material";
 import { GoVerified } from "react-icons/go";
 
-const UserInfo = ({ size = "normal", user, profile_img, verified }) => {
+const UserInfo = ({
+  size = "normal",
+  user,
+  profile_img,
+  verified,
+  fontSize = 10,
+}) => {
   const marginRightName = 0.5;
   return (
     <Chip
       size={size}
       label={
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Typography variant="caption" sx={{ marginRight: marginRightName }}>
+          <Typography
+            variant="caption"
+            sx={{ marginRight: marginRightName, fontSize }}
+          >
             {user}
           </Typography>
           {verified && <GoVerified color="#0984e3" />}
