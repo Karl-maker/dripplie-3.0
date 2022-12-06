@@ -12,6 +12,14 @@ const language = {
       enter_username_or_email: "Enter Username / Email",
       confirm_password: "Confirm Password",
     },
+
+    location: {
+      permission_title: "Allow Location",
+      permission_message:
+        "Allow Dripple to have access to your location temporarly to provide a more accurate service.",
+      permission_denied: "Deny",
+      permission_granted: "Allow",
+    },
   },
 
   spanish: {
