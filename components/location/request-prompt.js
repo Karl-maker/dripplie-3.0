@@ -15,11 +15,13 @@ import { buttonAnalytics } from "../../utils/analytics";
 
 /**
  *
+ * @author Karl-Johan Bailey
+ * @created 06/12/2022
+ * @desc Permission for location dialog
  * @param { Boolean } open
  * @param { Function } onClose Event on close
  * @param { Function } onDeny Event on deny button
  * @param { Function } onAllow Event on allow button
- * @desc Permission for location dialog
  *
  */
 
