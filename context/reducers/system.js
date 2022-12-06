@@ -13,7 +13,7 @@ export const systemSlice = createSlice({
   name: "system",
   initialState: {
     location: null,
-    language: "japanese",
+    language: "english",
   },
   reducers: {
     updateLocation: (state, action) => {
