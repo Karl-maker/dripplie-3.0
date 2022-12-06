@@ -65,7 +65,7 @@ const RequestLocationPrompt = ({
         {language[system.language].location.permission_title}
       </DialogTitle>
       <DialogContent>
-        <DialogContentText textAlign="center">
+        <DialogContentText textAlign="center" color="info">
           {
             // Message
           }
