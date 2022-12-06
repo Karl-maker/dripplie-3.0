@@ -11,6 +11,7 @@ import { MdLocationOn } from "react-icons/md";
 
 import language from "../../constants/language";
 import widget_constant from "../widget/constants";
+import { buttonAnalytics } from "../../utils/analytics";
 
 /**
  *
@@ -44,10 +45,16 @@ const RequestLocationPrompt = ({
 
   const handleDeny = () => {
     onDeny();
+    buttonAnalytics("Location Permission", {
+      description: "Denied",
+    });
   };
 
   const handleAllow = () => {
     onAllow();
+    buttonAnalytics("Location Permission", {
+      description: "Allowed",
+    });
   };
 
   return (
