@@ -1,7 +1,16 @@
-import { Container, Box, Tabs, Tab, Button, Typography } from "@mui/material";
+import {
+  Container,
+  Box,
+  Tabs,
+  Tab,
+  Button,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import * as RiIcon from "react-icons/ri";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import Flag from "react-world-flags";
 
 import language from "../../constants/language";
 
@@ -73,18 +82,27 @@ export default function Layout({ children }) {
           })}
         </Tabs>
         <Box sx={{ marginRight: "20px" }}>
-          <Button
-            variant="contained"
-            disableElevation
-            maxWidth={40}
-            sx={{
-              textTransform: "none",
-              borderRadius: "5px",
-              color: "#ffff",
-            }}
-          >
-            {language[system.language].auth.sign_up}
-          </Button>
+          {/* <Button
+          variant="contained"
+          disableElevation
+          maxWidth={40}
+          sx={{
+            textTransform: "none",
+            borderRadius: "5px",
+            color: "#ffff",
+          }}
+        >
+          {language[system.language].auth.sign_up}
+        </Button> */}
+
+          <IconButton sx={{ width: 40, height: 40 }} disabled>
+            <Flag
+              style={{ borderRadius: 2 }}
+              code={system.location.code}
+              height="14"
+              width="24"
+            />
+          </IconButton>
         </Box>
       </Box>
       <main style={{ paddingTop: "50px" }}>{children}</main>

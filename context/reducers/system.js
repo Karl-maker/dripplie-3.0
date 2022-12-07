@@ -17,6 +17,7 @@ export const systemSlice = createSlice({
       longitude: null,
       country: "",
       city: "",
+      code: "tto",
     },
     language: "english",
   },
