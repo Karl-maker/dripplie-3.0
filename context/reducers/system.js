@@ -5,19 +5,23 @@ import { createSlice } from "@reduxjs/toolkit";
  * @author Karl-Johan Bailey
  * @created 18/11/2022
  * @desc Create system slice for redux store which stores information on device
- * @see Documentation @link https://react-redux.js.org/tutorials/quick-start
+ * @see https://react-redux.js.org/tutorials/quick-start
  *
  */
 
 export const systemSlice = createSlice({
   name: "system",
   initialState: {
-    location: null,
+    location: {
+      latitude: null,
+      longitude: null,
+    },
     language: "english",
   },
   reducers: {
     updateLocation: (state, action) => {
-      state.location = action.payload;
+      state.location.latitude = action.payload.latitude;
+      state.location.longitude = action.payload.longitude;
     },
     updateLanguage: (state, action) => {
       state.language = action.payload;
