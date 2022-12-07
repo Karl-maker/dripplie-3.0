@@ -6,6 +6,7 @@ import {
   Button,
   IconButton,
   Typography,
+  Skeleton,
 } from "@mui/material";
 import * as RiIcon from "react-icons/ri";
 import { useState } from "react";
@@ -96,12 +97,16 @@ export default function Layout({ children }) {
         </Button> */}
 
           <IconButton sx={{ width: 40, height: 40 }} disabled>
-            <Flag
-              style={{ borderRadius: 2 }}
-              code={system.location.code}
-              height="14"
-              width="24"
-            />
+            {!system.location.code ? (
+              <Skeleton height={24} width={34} />
+            ) : (
+              <Flag
+                style={{ borderRadius: 2 }}
+                code={system.location.code}
+                height="14"
+                width="24"
+              />
+            )}
           </IconButton>
         </Box>
       </Box>
