@@ -1,5 +1,9 @@
 const language = {
   english: {
+    general: {
+      okay: "Okay",
+    },
+
     auth: {
       sign_in: "Sign In",
       sign_up: "Sign Up",
@@ -19,36 +23,9 @@ const language = {
         "Allow Dripple to have access to your location temporarly to provide a more accurate service.",
       permission_denied: "Deny",
       permission_granted: "Allow",
-    },
-  },
-
-  spanish: {
-    auth: {
-      sign_in: "Signo",
-      sign_up: "Inscribirse",
-
-      already_have_account: "Already have an account?",
-      dont_have_account: "Don't have an account?",
-      forgot_password: "Forgot your password?",
-
-      enter_password: "Enter Password",
-      enter_username_or_email: "Enter Username / Email",
-      confirm_password: "Confirm Password",
-    },
-  },
-
-  japanese: {
-    auth: {
-      sign_in: "ログインする",
-      sign_up: "登録",
-
-      already_have_account: "Already have an account?",
-      dont_have_account: "Don't have an account?",
-      forgot_password: "Forgot your password?",
-
-      enter_password: "Enter Password",
-      enter_username_or_email: "Enter Username / Email",
-      confirm_password: "Confirm Password",
+      issue_accessing_title: "Location Blocked",
+      issue_accessing_message:
+        "We are having an issue using your geolocation. Check your location settings on your browser then refresh the page to try again",
     },
   },
 };
