@@ -25,7 +25,7 @@ const language = {
       permission_granted: "Allow",
       issue_accessing_title: "Location Blocked",
       issue_accessing_message:
-        "We are having an issue using your geolocation. Check your location settings on your browser then refresh the page to try again",
+        "We are having an issue using your geolocation. Currently we would not be able to provide accurate service. Check your location settings on your browser then refresh the page to try again",
     },
   },
 };

@@ -15,6 +15,8 @@ export const systemSlice = createSlice({
     location: {
       latitude: null,
       longitude: null,
+      country: "",
+      city: "",
     },
     language: "english",
   },
