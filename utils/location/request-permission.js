@@ -6,7 +6,7 @@
  * @param { Function } onGranted callback that gets result
  * @param { Function } onError callback that gets result
  * @param { Function } onDenied callback that gets result
- * @see https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API/Using_the_Permissions_API
+ * @see https://www.pluralsight.com/guides/how-to-use-geolocation-call-in-reactjs
  *
  */
 
