@@ -1,7 +1,7 @@
 /**
  *
- * @param {*} columns
- * @param {*} array
+ * @param {Number} columns
+ * @param {Array} array
  * @desc Sorts list to be spread evenly between a matrix [][]
  * @returns 2D Matrix [][]
  *
