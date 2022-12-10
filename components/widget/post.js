@@ -38,9 +38,12 @@ export default function Post({
     router.push(`${page.PROFILE}/${author}`); // Send to profile/user-name
   };
 
+  /**
+   * TODO Enlarge with Dialog
+   */
+
   const handlePostClick = (e) => {
     e.preventDefault();
-    router.push(`${page.POST}/${post_id}`); // Send to post/123
   };
 
   const toggleMedia = (e) => setShowMedia((show) => !show);
