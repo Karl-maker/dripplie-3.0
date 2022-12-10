@@ -18,6 +18,7 @@ export default function Widget({
   showMedia = true,
   height = defaults.height,
   width = defaults.width,
+  maxWidth = defaults.maxWidth,
   handleDisplayButtonClick,
 }) {
   const { borderRadius, borderWidth } = defaults;
@@ -65,7 +66,7 @@ export default function Widget({
   };
 
   return (
-    <WidgetWrapper height={height} width={width}>
+    <WidgetWrapper height={height} width={width} maxWidth={maxWidth}>
       <Box
         ref={boxRef}
         sx={{

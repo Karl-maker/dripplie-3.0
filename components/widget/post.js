@@ -17,6 +17,7 @@ import page from "../../constants/pages";
  */
 
 export default function Post({
+  maxWidth = defaults.maxWidth,
   width = defaults.width,
   height = defaults.height,
   author = "",
@@ -69,7 +70,7 @@ export default function Post({
           alt="post image"
           width={width}
           height={height}
-          objectFit="fill"
+          objectFit="cover"
         />
       </Box>
     );
@@ -77,6 +78,7 @@ export default function Post({
 
   return (
     <Widget
+      maxWidth={maxWidth}
       width={width}
       height={height}
       media={media ? <MediaDisplay src={media.url} /> : null}
