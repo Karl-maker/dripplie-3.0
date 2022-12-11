@@ -1,14 +1,13 @@
-import { Box, Typography, Chip, Avatar, Backdrop } from "@mui/material";
+import { Box, Typography, Chip, Avatar } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 import UserInfo from "../user/user-info";
 import Widget from ".";
 import defaults from "./constants";
 import page from "../../constants/pages";
-import Enlarged from "./enlarged";
-import useOnClickOutside from "../../hooks/on-click-outside";
+import FocusOn from "./focus-on";
 
 /**
  *
@@ -30,7 +29,6 @@ export default function Post({
   post_id,
   onPostClick = () => {},
 }) {
-  const enlargedWidgetRef = useRef();
   const padding = "10px";
   const { borderRadius } = defaults;
   const router = useRouter();
@@ -38,10 +36,6 @@ export default function Post({
   const [enlargedWidget, setEnlargedWidget] = useState(false);
 
   /* Event Handlers */
-
-  // Click outside of enlarged widget
-
-  useOnClickOutside(enlargedWidgetRef, () => setEnlargedWidget(false));
 
   const handleProfileClick = (e) => {
     e.stopPropagation();
@@ -84,10 +78,7 @@ export default function Post({
   };
 
   return (
-    <>
-      {/**
-       * @desc Widget beside action that happens on click
-       */}
+    <FocusOn open={enlargedWidget} setOpen={setEnlargedWidget} element={<></>}>
       <Widget
         maxWidth={maxWidth}
         width={width}
@@ -129,17 +120,6 @@ export default function Post({
           </Typography>
         </Box>
       </Widget>
-      {/**
-       * @desc To focus on media
-       */}
-      <Backdrop
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={enlargedWidget}
-      >
-        <div ref={enlargedWidgetRef}>
-          <Enlarged />
-        </div>
-      </Backdrop>
-    </>
+    </FocusOn>
   );
 }
