@@ -7,7 +7,7 @@ import UserInfo from "../user/user-info";
 import Widget from ".";
 import defaults from "./constants";
 import page from "../../constants/pages";
-import FocusOn from "./focus-on";
+import FocusOn from "../utils/focus-on";
 
 /**
  *

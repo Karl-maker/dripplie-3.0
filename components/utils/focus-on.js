@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Backdrop } from "@mui/material";
 
-import defaults from "./constants";
+import defaults from "../widget/constants";
 import useOnClickOutside from "../../hooks/on-click-outside";
 
 /**
