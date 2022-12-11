@@ -16,14 +16,20 @@ import useOnClickOutside from "../../hooks/on-click-outside";
  *
  */
 
-export default function FocusOn({ children, open, setOpen, element }) {
+export default function FocusOn({
+  children,
+  open,
+  setOpen,
+  element,
+  closeOnClickOutside = true,
+}) {
   const ref = useRef();
 
   /* Event Handlers */
 
   // Click outside of enlarged widget
 
-  useOnClickOutside(ref, () => setOpen(false));
+  useOnClickOutside(ref, () => closeOnClickOutside && setOpen(false));
 
   return (
     <>
