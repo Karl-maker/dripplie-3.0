@@ -8,6 +8,7 @@ import Widget from ".";
 import defaults from "./constants";
 import page from "../../constants/pages";
 import FocusOn from "../utils/focus-on";
+import Media from "./media";
 
 /**
  *
@@ -52,7 +53,7 @@ export default function Post({
 
   /* Media Displayer */
 
-  const MediaDisplay = ({ src }) => {
+  const MediaDisplay = ({ media }) => {
     return (
       <Box sx={{ position: "relative" }} onClick={toggleMedia}>
         <Box
@@ -66,13 +67,7 @@ export default function Post({
             verified={verified}
           />
         </Box>
-        <img
-          src={src}
-          alt="post image"
-          width={width}
-          height={height}
-          objectFit="none"
-        />
+        <Media media={media} options={{ width, height, alt: "" }} />
       </Box>
     );
   };
@@ -83,7 +78,7 @@ export default function Post({
         maxWidth={maxWidth}
         width={width}
         height={height}
-        media={media ? <MediaDisplay src={media.url} /> : null}
+        media={media ? <MediaDisplay media={media} /> : null}
         showMedia={showMedia}
         handleDisplayButtonClick={toggleMedia}
       >
