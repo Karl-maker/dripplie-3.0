@@ -9,6 +9,7 @@ import defaults from "./constants";
 import page from "../../constants/pages";
 import FocusOn from "../utils/focus-on";
 import Media from "./media";
+import MainWidget from "./main";
 
 /**
  *
@@ -73,7 +74,19 @@ export default function Post({
   };
 
   return (
-    <FocusOn open={enlargedWidget} setOpen={setEnlargedWidget} element={<></>}>
+    <FocusOn
+      open={enlargedWidget}
+      setOpen={setEnlargedWidget}
+      element={
+        <MainWidget
+          media={media}
+          user={author}
+          profile_img={profile_img}
+          verified={verified}
+          text={text}
+        />
+      }
+    >
       <Widget
         maxWidth={maxWidth}
         width={width}

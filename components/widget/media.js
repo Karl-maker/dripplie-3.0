@@ -10,7 +10,7 @@ const IMAGE = "img";
  *
  */
 
-export default function Media({ media, options }) {
+export default function Media({ media, options = {}, borderRadius }) {
   if (media.type === IMAGE || !media.type)
     return (
       <img

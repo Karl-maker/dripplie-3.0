@@ -1,5 +1,5 @@
 import { Typography, Chip, Avatar, Box } from "@mui/material";
-import { GoVerified } from "react-icons/go";
+import Verified from "./verified";
 
 /**
  *
@@ -28,7 +28,7 @@ const UserInfo = ({
           >
             {user}
           </Typography>
-          {verified && <GoVerified color="#0984e3" />}
+          {verified && <Verified />}
         </Box>
       }
       avatar={<Avatar src={profile_img || ""} alt={user} />}
