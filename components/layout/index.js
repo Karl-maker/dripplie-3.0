@@ -101,7 +101,7 @@ export default function Layout({ children }) {
               <Skeleton height={24} width={34} />
             ) : (
               <Flag
-                style={{ borderRadius: 2 }}
+                style={{ borderRadius: 3.5 }}
                 code={system.location.code}
                 height="14"
                 width="24"
