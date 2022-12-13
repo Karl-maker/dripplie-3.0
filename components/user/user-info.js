@@ -15,6 +15,7 @@ const UserInfo = ({
   profile_img,
   verified,
   fontSize = 10,
+  typographyStyle = {},
 }) => {
   const marginRightName = 0.5;
   return (
@@ -24,7 +25,7 @@ const UserInfo = ({
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Typography
             variant="caption"
-            sx={{ marginRight: marginRightName, fontSize }}
+            sx={{ marginRight: marginRightName, fontSize, ...typographyStyle }}
           >
             {user}
           </Typography>

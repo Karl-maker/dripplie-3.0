@@ -13,10 +13,11 @@ export { buttonAnalytics };
  * @author Karl-Johan Bailey
  * @created 18/11/2022
  * @desc All button clicks will be processed here
- * @param string name, object {}
+ * @param {String} name, object {}
  *
  */
 
-function buttonAnalytics(name, {}) {
+function buttonAnalytics(name, { description }) {
   // TODO Connect GoogleAnalytics
+  console.log(name + ": " + description);
 }

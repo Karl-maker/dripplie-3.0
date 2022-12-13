@@ -1,6 +1,7 @@
 import { Stack, Grid, Box, useTheme, useMediaQuery } from "@mui/material";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
+import { useSelector } from "react-redux";
 
 import Layout from "../components/layout";
 import { useDispatch } from "react-redux";
@@ -9,11 +10,12 @@ import RequestLocationPrompt from "../components/location/request-prompt";
 import ErrorLocationPrompt from "../components/location/error-prompt";
 import Widget from "../components/widget";
 import Post from "../components/widget/post";
-import WidgetSkeleton from "../components/widget/skeleton";
 import Wrapper from "../components/widget/wrapper";
 import { spreadElementsInMatrix } from "../utils/array";
 import handleGeoLocationPermission from "../utils/location/request-permission";
 import getLocationDetails from "../utils/location/details";
+import postMachine from "../machines/posts";
+import loadWidgets from "../components/widget/skeletons";
 
 /**
  *
@@ -24,9 +26,16 @@ import getLocationDetails from "../utils/location/details";
  */
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const system = useSelector((state) => state.system);
+
+  const [postState, postDispatch] = useReducer(
+    postMachine.reducer,
+    postMachine.initial
+  );
+
   const [locationIssueMessage, setLocationIssueMessage] = useState(null);
   const [locationPrompt, setLocationPrompt] = useState(true);
-  const [posts, setPosts] = useState([]);
   const [columns, setColumns] = useState(2);
   const [sortedPosts, setSortedPosts] = useState(Array(1).fill(Array()));
 
@@ -46,18 +55,18 @@ export default function Home() {
    *  md = 4
    *  lg = 5 / 6
    *
-   * @returns {Number}
+   * @returns { Number }
    */
 
   function setupColumns() {
     let col = 2;
 
     if (xlg) {
-      col = 5;
+      col = 6;
     } else if (lg) {
-      col = 5;
-    } else if (md) {
       col = 4;
+    } else if (md) {
+      col = 3;
     } else if (sm) {
       col = 3;
     } else if (sx) {
@@ -68,133 +77,154 @@ export default function Home() {
   }
 
   useEffect(() => {
-    setPosts([
-      <Post
-        height={300}
-        author="Karl-Johan Bailey"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-        verified
-      />,
-      <Post
-        height={192}
-        author="James_111"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${180 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-      />,
-      <Post
-        height={300}
-        author="Karl-Johan Bailey"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-        verified
-      />,
-      <Post
-        height={300}
-        author="Karl-Johan Bailey"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-        verified
-      />,
-      <Post
-        height={192}
-        author="James_111"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${180 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-      />,
-      <Post
-        height={300}
-        author="Karl-Johan Bailey"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-        verified
-      />,
-      <Post
-        height={300}
-        author="Karl-Johan Bailey"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-        verified
-      />,
-      <Post
-        height={192}
-        author="James_111"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${180 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-      />,
-      <Post
-        height={300}
-        author="Karl-Johan Bailey"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-        verified
-      />,
-      <Post
-        height={192}
-        author="James_111"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${180 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-      />,
-      <Post
-        height={192}
-        author="James_111"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${180 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-      />,
-      <Post
-        height={300}
-        author="Karl-Johan Bailey"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-        verified
-      />,
-      <Post
-        height={192}
-        author="James_111"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${180 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-      />,
-      <Post
-        height={300}
-        author="Karl-Johan Bailey"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-        verified
-      />,
-      <Post
-        height={300}
-        author="Karl-Johan Bailey"
-        profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
-        media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-        verified
-      />,
-    ]);
-  }, []);
+    if (system.location.pending) return;
+
+    postDispatch({ type: postMachine.actions.FETCH });
+    async function getPosts() {
+      return {
+        posts: [
+          <Post
+            height={200}
+            author="Karl-Johan Bailey"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            verified
+          />,
+          <Post
+            height={192}
+            author="James_111"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${180 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          />,
+          <Post
+            height={400}
+            author="Karl-Johan Bailey"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            verified
+          />,
+          <Post
+            height={310}
+            author="Karl-Johan Bailey"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            verified
+          />,
+          <Post
+            height={150}
+            author="James_111"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${180 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          />,
+          <Post
+            height={310}
+            author="Karl-Johan Bailey"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            verified
+          />,
+          <Post
+            height={200}
+            author="Karl-Johan Bailey"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            verified
+          />,
+          <Post
+            height={192}
+            author="James_111"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${180 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          />,
+          <Post
+            height={300}
+            author="Karl-Johan Bailey"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            verified
+          />,
+          <Post
+            height={192}
+            author="James_111"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${180 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          />,
+          <Post
+            height={192}
+            author="James_111"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${180 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          />,
+          <Post
+            height={300}
+            author="Karl-Johan Bailey"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            verified
+          />,
+          <Post
+            height={192}
+            author="James_111"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${180 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+          />,
+          <Post
+            height={300}
+            author="Karl-Johan Bailey"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            verified
+          />,
+          <Post
+            height={300}
+            author="Karl-Johan Bailey"
+            profile_img={`https://picsum.photos/${200 * 2}/${200 * 2}`}
+            media={{ url: `https://picsum.photos/${200 * 2}/${300 * 2}` }}
+            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            verified
+          />,
+        ],
+        message: "",
+      };
+    }
+
+    getPosts()
+      .then((results) => {
+        postDispatch({
+          type: postMachine.actions.SUCCESS,
+          posts: results.posts,
+          message: results.message,
+        });
+      })
+      .catch((err) => {
+        postDispatch({
+          type: postMachine.actions.ERROR,
+          error: err,
+          message: "Cannot Get Posts",
+        });
+      });
+  }, [system.location.pending]);
 
   useEffect(() => {
-    if (!posts) return;
-
     const col_num = setupColumns();
-
-    setSortedPosts(spreadElementsInMatrix(col_num, posts));
     setColumns(col_num);
-  }, [xlg, lg, md, sm, sx, posts]);
 
-  const dispatch = useDispatch();
+    if (!postState.posts) return;
+    setSortedPosts(spreadElementsInMatrix(col_num, postState.posts));
+  }, [xlg, lg, md, sm, sx, postState.posts]);
 
   return (
     <>
@@ -212,7 +242,7 @@ export default function Home() {
         sx={{ paddingTop: 1, paddingLeft: 0.5, paddingRight: 0.5 }}
         justifyContent="center"
       >
-        {sortedPosts[0].length > 0 ? (
+        {postState.loading ? (
           <>
             {Array.from(Array(columns), (e, i) => {
               return (
@@ -223,20 +253,52 @@ export default function Home() {
                     justifyContent="flex-start"
                     alignItems="flex-start"
                   >
-                    {sortedPosts[i] && (
-                      <>
-                        {sortedPosts[i].map((post) => (
-                          <Box sx={{ padding: 0.5 }}>{post}</Box>
-                        ))}
-                      </>
-                    )}
+                    {loadWidgets[i].map((post) => (
+                      <Box sx={{ padding: 1, width: "100%" }}>{post}</Box>
+                    ))}
                   </Stack>
                 </Grid>
               );
             })}
           </>
         ) : (
-          <></>
+          <>
+            {sortedPosts[0].length > 0 ? (
+              <>
+                {Array.from(Array(columns), (e, i) => {
+                  return (
+                    <Grid xs={6} sm={4} md={3} lg={2}>
+                      <Stack
+                        key={i}
+                        direction="column"
+                        justifyContent="flex-start"
+                        alignItems="flex-start"
+                      >
+                        {sortedPosts[i] && (
+                          <>
+                            {sortedPosts[i].map((post) => (
+                              <Box sx={{ padding: 1 }}>{post}</Box>
+                            ))}
+                          </>
+                        )}
+                      </Stack>
+                    </Grid>
+                  );
+                })}
+              </>
+            ) : (
+              <Box
+                sx={{
+                  height: "90vh",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {postState.message}
+              </Box>
+            )}
+          </>
         )}
       </Grid>
       {

@@ -18,6 +18,7 @@ export const systemSlice = createSlice({
       country: "",
       city: "",
       code: "tto",
+      pending: true,
     },
     language: "english",
   },
@@ -25,6 +26,7 @@ export const systemSlice = createSlice({
     updateLocation: (state, action) => {
       state.location.latitude = action.payload.latitude;
       state.location.longitude = action.payload.longitude;
+      state.location.pending = false;
     },
     updateLanguage: (state, action) => {
       state.language = action.payload;
